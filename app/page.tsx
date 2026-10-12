@@ -1,4 +1,6 @@
-import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -15,10 +17,19 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col items-center justify-center gap-4">
-              <button className="bg-black text-white px-4 py-2 rounded-md">
-                Start for free
-              </button>
-              <p>Free forever</p>
+              <Link href="/sign-up">
+                {" "}
+                <Button
+                  size="lg"
+                  className="h-12 px-8 text-md font-medium rounded-lg"
+                >
+                  Start for free <ArrowRight className="ml-2 size-4" />
+                </Button>
+              </Link>
+
+              <p className="text-muted-foreground text-sm">
+                Free forever. No credit card required.
+              </p>
             </div>
           </div>
         </section>
