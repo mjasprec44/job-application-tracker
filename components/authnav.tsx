@@ -13,7 +13,7 @@ import SignOutButton from "./sign-out-btn";
 
 export default async function AuthNav() {
   const session = await getSession();
-  console.log(session);
+
   if (session) {
     return (
       <div className="flex items-center">
