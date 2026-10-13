@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { BriefcaseIcon } from "lucide-react";
-import { Button } from "./ui/button";
+import { Suspense } from "react";
+import AuthNav from "./authnav";
+import { Skeleton } from "./ui/skeleton";
 
-export default function Navbar() {
+export default async function Navbar() {
   return (
     <nav className="bg-white border-b border-gray-200">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 py-4">
@@ -14,22 +16,9 @@ export default function Navbar() {
           <span>Job Tracker</span>
         </Link>
 
-        <div className="flex items-center gap-4">
-          <Link href="/sign-in">
-            <Button
-              variant="ghost"
-              className="text-gray-700 hover:text-gray-900"
-            >
-              Log In
-            </Button>
-          </Link>
-
-          <Link href="/sign-up">
-            <Button className="bg-primary hover:bg-primary/90">
-              Start for free
-            </Button>
-          </Link>
-        </div>
+        <Suspense fallback={<Skeleton className="h-4 w-[150px]" />}>
+          <AuthNav />
+        </Suspense>
       </div>
     </nav>
   );
