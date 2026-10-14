@@ -51,6 +51,7 @@ export default function ImageTabs() {
               alt={currentTab.label}
               width={1200}
               height={800}
+              loading="eager"
             />
           </div>
         </div>

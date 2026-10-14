@@ -1,6 +1,5 @@
 "use client";
 
-import column from "@/lib/models/column";
 import { Board, Column } from "@/lib/models/models.types";
 import {
   Award,
@@ -19,7 +18,7 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Button } from "./ui/button";
-import CreateJobApplicationDialog from "./create-job-application";
+import CreateJobApplicationDialog from "./create-job-dialog";
 
 interface KanbanBoardProps {
   board: Board;
