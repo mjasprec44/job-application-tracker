@@ -13,7 +13,7 @@ async function DashboardContent() {
   const data = await Board.findOne({
     userId: session?.user.id,
     name: "Job Hunt",
-  }).populate({ path: "columns" });
+  }).populate({ path: "columns", populate: { path: "jobApplications" } });
   const board = JSON.parse(JSON.stringify(data));
 
   return (
