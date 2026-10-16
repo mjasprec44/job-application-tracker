@@ -136,7 +136,7 @@ export default function KanbanBoard({ board, userId }: KanbanBoardProps) {
   return (
     <>
       <div>
-        <div>
+        <div className="flex flex-col gap-4">
           {columns.map((col, key) => {
             const config = COLUMN_CONFIG[key] || {
               color: "bg-cyan-500",

@@ -5,16 +5,23 @@ import dbConnect from "@/lib/db";
 import { Board } from "@/lib/models";
 import { Suspense } from "react";
 
-async function DashboardContent() {
-  const session = await getSession();
-
+async function getBoard(userId: string) {
+  "use cache";
   await dbConnect();
 
   const data = await Board.findOne({
-    userId: session?.user.id,
+    userId,
     name: "Job Hunt",
   }).populate({ path: "columns", populate: { path: "jobApplications" } });
+
   const board = JSON.parse(JSON.stringify(data));
+
+  return board;
+}
+
+async function DashboardContent() {
+  const session = await getSession();
+  const board = await getBoard(session?.user.id || "");
 
   return (
     <div className="min-h-screen bg-white">
@@ -30,7 +37,7 @@ async function DashboardContent() {
   );
 }
 
-export default function Dashboard() {
+export default async function Dashboard() {
   return (
     <Suspense fallback={<Skeleton className="h-40 w-40 rounded-md " />}>
       <DashboardContent />
