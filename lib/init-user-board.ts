@@ -19,12 +19,12 @@ const DEFAULT_COLUMNS = [
     order: 3,
   },
   {
-    name: "Reject",
+    name: "Rejected",
     order: 4,
   },
 ];
 
-export async function initializedUserBoard(userId: string) {
+export async function initializeUserBoard(userId: string) {
   try {
     await dbConnect();
 

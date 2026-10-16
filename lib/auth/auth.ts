@@ -3,7 +3,7 @@ import { mongodbAdapter } from "better-auth/adapters/mongodb";
 import { MongoClient } from "mongodb";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { initializedUserBoard } from "../init-user-board";
+import { initializeUserBoard } from "../init-user-board";
 
 const client = new MongoClient(process.env.MONGODB_URI!);
 const db = client.db();
@@ -24,7 +24,7 @@ export const auth = betterAuth({
       create: {
         after: async (user) => {
           if (user.id) {
-            await initializedUserBoard(user.id);
+            await initializeUserBoard(user.id);
           }
         },
       },
