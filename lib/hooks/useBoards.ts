@@ -17,16 +17,18 @@ export function useBoard(initialBoard?: Board | null) {
     setColumns(initialBoard?.columns ?? []);
   }
 
-  async function moveJobs(
+  async function moveJob(
     jobApplicationId: string,
     newColumnId: string,
     newOrder: number,
-  ) {}
+  ) {
+    console.log(jobApplicationId, newColumnId, newOrder);
+  }
 
   return {
     board,
     columns,
     error,
-    moveJobs,
+    moveJob,
   };
 }
